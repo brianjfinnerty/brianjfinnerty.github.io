@@ -30,7 +30,8 @@
         const userId = 'userid=' + params.userid
         ifrm.setAttribute('src', urlBase + pubKey + roomToken + userId);
         ifrm.width = '100%'
-        ifrm.height = '100%'
+        ifrm.height = '800px'
+        ifrm.allow = "camera;microphone"
         ifrm.style.border = 'none'
 
         document.body.appendChild(ifrm);
