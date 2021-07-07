@@ -29,6 +29,7 @@
         const roomToken = 'room_token=' + params.room_token + '&'
         const userId = 'userid=' + params.userid
         ifrm.setAttribute('src', urlBase + pubKey + roomToken + userId);
+        document.body.appendChild(ifrm); 
 
 
 	</script>
