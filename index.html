@@ -17,7 +17,7 @@
             'app': 'virtualclassroom',
             'token': params.token,
             'userid': params.userid,
-            'publicKey': '63d2dd20e7557161942c53e4'
+            'publicKey': params.publickey || '63d2dd20e7557161942c53e4'
         }
 	const classroom = new VirtualClassroomClient('#app', lcConf, {})
 	</script>
