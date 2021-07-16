@@ -14,12 +14,11 @@
         const params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
 
         const lcConf = {
-            'app': 'virtualclassroom',
             'token': params.token,
             'userid': params.userid,
             'publicKey': params.publickey || '63d2dd20e7557161942c53e4'
         }
-	const classroom = new VirtualClassroomClient('#app', lcConf, {})
+	const classroom = new VirtualClassroom('#app', lcConf, {})
 	</script>
 
    
