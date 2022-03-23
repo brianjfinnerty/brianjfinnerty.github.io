@@ -25,10 +25,10 @@
         const lcConf = {
             'token': params.token || token, // Eg. "first-test-room-token"
             'userid': params.userId || '1234', // Eg. "12345G"
-            'username': userName, // Eg. "Test Widget Teacher",	
+            'username': params.username || userName, // Eg. "Test Widget Teacher",	
             'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
-	    'userType': userType,	
-	    'instantClass': true	
+      	    'userType': userType,	
+      	    'instantClass': true	
         }
 	const classroom = new VirtualClassroom('#app', lcConf, {});
 	</script>
