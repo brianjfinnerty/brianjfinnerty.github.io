@@ -4,19 +4,28 @@
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Virtual Classroom Widget</title>
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vue/virtualclassroom/widget.css?now=2">
-  <script type="text/javascript" src="https://static.learncube.net/vue/virtualclassroom/widget.js?now=2"></script>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.api.0.2.6.css">
+  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.api.0.2.6.js"></script>
 </head>
 <body>
 	<div id="app"></div>
 	<script>
         const search = location.search.substring(1);
-        const params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+	let params;
+	try {
+		params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+	} catch (err) {
+		params = {}
+	}
 
+	const userType = params.userType || 'student'
+	const userName = 'Test ' + userType
+	const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
+	
         const lcConf = {
-            'token': params.token,
-            'userid': params.userid,
-	    'username': params.username,	
+            'token': params.token || token, // Eg. "first-test-room-token"
+            'userid': params.userId || '1234', // Eg. "12345G"
+            'username': userName, // Eg. "Test Widget Teacher",	
             'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
 	    'instantClass': true	
         }
