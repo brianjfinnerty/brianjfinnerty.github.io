@@ -3,14 +3,37 @@
 <head>
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width,initial-scale=1">
-  <title>Learncube Fullview</title>
-
+  <title>Learncube Virtual Classroom Widget</title>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.1.1.2.css">
+  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.1.1.2.js"></script>
 </head>
 <body>
 	<div id="app"></div>
+	<script>
+        const search = location.search.substring(1);
+	let params;
+	try {
+		params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+	} catch (err) {
+		params = {}
+	}
+
+	const userType = params.userType || 'student'
+	const userName = 'Test ' + userType
+	const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
 	
+        const lcConf = {
+            'token': params.token || token, // Eg. "first-test-room-token"
+            'userid': params.userId || '1234', // Eg. "12345G"
+            'username': params.username || userName, // Eg. "Test Widget Teacher",	
+            'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
+      	    'userType': userType,	
+      	    'instantClass': true	
+        }
+	const classroom = new VirtualClassroom('#app', lcConf, {});
+	</script>
+
    
 
 </body>
-<script src="//install.fullview.io" data-org="cfae2ac0-207d-4570-bf18-f8973055b9cf"></script>
 </html>
