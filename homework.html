@@ -10,27 +10,31 @@
 <body>
   <div id="app"></div>
   <script>
-        const search = location.search.substring(1);
-  let params;
-  try {
-    params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-  } catch (err) {
-    params = {}
-  }
+       const search = location.search.substring(1);
+      let params;
+      try {
+        params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+      } catch (err) {
+        params = {}
+      }
 
-  const userType = params.userType || 'student'
-  const userName = 'Test ' + userType
-  const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
-  
-        const lcConf = {
-            'token': params.token || token, // Eg. "first-test-room-token"
-            'userid': params.userId || '1234', // Eg. "12345G"
-            'username': params.username || userName, // Eg. "Test Widget Teacher",  
-            'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
-            'userType': userType, 
-            'instantClass': true  
-        }
-  const classroom = new VcHomework('#app', lcConf, {});
+      const userType = params.userType || 'student'
+      const userName = 'Test ' + userType
+      const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
+
+      const lcConf = {
+          'token': params.token || token, // Eg. "first-test-room-token"
+          'userid': params.userId || '1234', // Eg. "12345G"
+          'username': params.username || userName, // Eg. "Test Widget Teacher",  
+          'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
+          'userType': userType, 
+          'instantClass': true  
+      }
+      
+      const homework = new VcHomework('#app', lcConf, {});
+      homework.addEventListener('whiteboardAction', function (evt) {
+          console.log(evt.type, evt.detail)
+      });  
   </script>
 
    
