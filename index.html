@@ -32,7 +32,8 @@
         }
 	const classroom = new VirtualClassroom('#app', lcConf, {
 		'settings.enter_in_progress': false,
-		'settings.enter_when_admitted': false
+		'settings.enter_when_admitted': false,
+		'settings.enable_recording': true
 	});
 		
 	classroom.addEventListener('whiteboardAction', function (evt) {
