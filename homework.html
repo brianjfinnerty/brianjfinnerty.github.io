@@ -31,7 +31,7 @@
           'instantClass': true  
       }
       
-      const homework = new VcHomework('#app', lcConf, {});
+      const homework = new VcHomework('#app', lcConf, {'whiteboard.enable_math_tools': true});
       homework.addEventListener('whiteboardAction', function (evt) {
           console.log(evt.type, evt.detail)
       });  
