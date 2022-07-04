@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube VC Widget - app.learncube.com</title>
+
+</head>
+<body>
+
+<!--    <iframe src="https://app.learncube.com/api/virtual-classroom/class/start/?pub_key=7ef83a60471e885d74fc3cd2&room_token=las-palmas-15-6-1&userid=23837"></iframe>-->
+
+<!--	<div id="app"></div>-->
+
+
+</body>
+
+	<script>
+
+        const search = location.search.substring(1);
+        const params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+
+        const ifrm = document.createElement('iframe');
+        ifrm.setAttribute('id', 'ifrm'); // assign an id
+
+        // assign url
+        const urlBase = 'https://app.learncube.com/api/virtual-classroom/class/start/?'
+        const pubKey = 'pub_key=' + params.pub_key + '&'
+        const roomToken = 'room_token=' + params.room_token + '&'
+        const userId = 'userid=' + params.userid
+        ifrm.setAttribute('src', urlBase + pubKey + roomToken + userId);
+        ifrm.width = '100%'
+        ifrm.height = '800px'
+        ifrm.allow = "camera;microphone;autoplay"
+        ifrm.style.border = 'none'
+
+        document.body.appendChild(ifrm);
+
+
+	</script>
+</html>
