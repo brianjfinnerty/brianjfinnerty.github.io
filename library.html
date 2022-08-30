@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube Recording Widget</title>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/dev/client/css/app.css">
+  <script type="text/javascript" src="https://static.learncube.net/vc/library/dev/client/js/app.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+        // Global variables for use in the vue app below
+        let username = "brianos";
+        let userId = 455197;
+        const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
+        const lcConf = {
+            'token': token,
+            'userid': userId.toString(), // Eg. 12345G
+            'username': username, // Eg. 'Test Widget Teacher',
+            'validateUrl': '/vc/validate-lcapi/',
+            'learncubeUser': true
+        }
+        const lcLibrary = new Library('#lc-lib', lcConf)
+  </script>
+
+   
+
+</body>
+</html>
