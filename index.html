@@ -4,8 +4,11 @@
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Virtual Classroom Widget</title>
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.css">	
-  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.js"></script>
+  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.css"-->	
+  <!--script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.js"></script-->
+	
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js"></script>
 </head>
 <body>
 	<div id="app"></div>
@@ -36,7 +39,9 @@
 		'settings.enable_recording': true,
 		'settings.is_recorded': true,
 		'whiteboard.enable_math_tools': true,
-		'lesson_materials.library_url': "https://api.learncube.com/vc/api/files/?anything=everything&nothing=everything"
+		'lesson_materials.library_url': "https://api.learncube.com/vc/api/files/?anything=everything&nothing=everything",
+		"video.media_region": "us1",
+            	"video.room_recording": 'true'
 	});
 		
 	classroom.addEventListener('whiteboardAction', function (evt) {
