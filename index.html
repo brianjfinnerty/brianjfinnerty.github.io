@@ -29,9 +29,10 @@
             'token': params.token || token, // Eg. "first-test-room-token"
             'userid': params.userId || '1234', // Eg. "12345G"
             'username': params.username || userName, // Eg. "Test Widget Teacher",	
-            'publicKey': '63d2dd20e7557161942c53e4',
+            // 'publicKey': '63d2dd20e7557161942c53e4',
       	    'userType': userType,	
-      	    'instantClass': true	
+      	    'instantClass': true,
+	    'validateUrl': 'http://localhost:3000/get-valid-token/'	
         }
 	const classroom = new VirtualClassroom('#app', lcConf, {
 		'settings.enter_in_progress': false,
