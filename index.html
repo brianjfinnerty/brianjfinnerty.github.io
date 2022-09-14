@@ -4,8 +4,8 @@
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Virtual Classroom Widget</title>
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.2.0.0.css">	
-  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.2.0.0.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.1.1.8.css">	
+  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.1.1.8.js"></script>
 	
   <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css"-->	
   <!--script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js"></script-->
@@ -35,14 +35,20 @@
 	    'validateUrl': 'http://localhost:3000/get-valid-token/'	
         }
 	const classroom = new VirtualClassroom('#app', lcConf, {
-		'settings.enter_in_progress': false,
-		'settings.enter_when_admitted': false,
-		'settings.enable_recording': true,
-		'settings.is_recorded': true,
-		'whiteboard.enable_math_tools': true,
-		'lesson_materials.library_url': "https://api.learncube.com/vc/api/files/?anything=everything&nothing=everything",
-		"video.media_region": "us2",
-            	"video.room_recording": 'true'
+		'settings.class_control_button': true,
+  		'settings.show_class_feedback': false,
+  		'settings.allow_skip_onboarding': true,
+  		'settings.enter_when_admitted': false,
+  		'settings.enter_in_progress': false // ,
+		
+		// 'settings.enter_in_progress': false,
+		// 'settings.enter_when_admitted': false,
+		// 'settings.enable_recording': true,
+		// 'settings.is_recorded': true,
+		// 'whiteboard.enable_math_tools': true,
+		// 'lesson_materials.library_url': "https://api.learncube.com/vc/api/files/?anything=everything&nothing=everything",
+		// "video.media_region": "us2",
+            	// "video.room_recording": 'true'
 	});
 		
 	classroom.addEventListener('whiteboardAction', function (evt) {
