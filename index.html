@@ -4,8 +4,8 @@
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Virtual Classroom Widget</title>
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.1.2.0.css">	
-  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.1.2.0.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.css">
+  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.js"></script>
 	
   <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css"-->	
   <!--script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js"></script-->
@@ -38,18 +38,23 @@
   		'settings.allow_skip_onboarding': true,
   		'settings.enter_when_admitted': false,
   		'settings.enter_in_progress': false,
-		// 'settings.enable_recording': true,
-		// 'settings.is_recorded': true,
-		// 'whiteboard.enable_math_tools': true,
-		// 'lesson_materials.library_url': "https://api.learncube.com/vc/api/files/?anything=everything&nothing=everything",
-		"video.media_region": "us2",
-            	// "video.room_recording": 'true'
+		'settings.embedded_whiteboard': true
 	});
 		
-	classroom.addEventListener('whiteboardAction', function (evt) {
-          console.log(evt.type, evt.detail)
-      	});
-		
+	classroom.addEventListener('enterClass', function (evt) {
+	    const user = event.detail.user;
+	    const timestamp = event.detail.timestamp;
+	    console.log('User ' + userName + ' entered the class at ' + timestamp)
+	});
+
+	classroom.addEventListener('exitClass', function (evt) {
+	    // redirect to your own custom feedback form
+	    console.log('exitClass', evt.detail)
+	});
+
+	classroom.addEventListener('updateClassStatus', function (evt) {
+	    console.log('updateClassStatus', evt.detail)
+	});
 		
 	classroom.addEventListener('enterBreakoutRoom', function (evt) {
 	    const breakoutRoomToken = event.detail.token;
