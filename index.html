@@ -59,6 +59,10 @@
 	    const breakoutRoom = `https://brianjfinnerty.github.io/index.html?userId=${params.userId}&token=${breakoutRoomToken}&userType=${userType}&username=${params.username}`
 	    window.location = breakoutRoom
 	});	
+	
+	classroom.addEventListener('whiteboardAction', function (evt) {
+          console.log('whiteboardAction', evt.detail)
+      	})
 	</script>
 
    
