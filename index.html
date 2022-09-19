@@ -42,15 +42,12 @@
 	});
 		
 	classroom.addEventListener('enterClass', function (evt) {
-	    const user = event.detail.user;
-	    const timestamp = event.detail.timestamp;
-	    console.log('User ' + userName + ' entered the class at ' + timestamp)
-	});
+          console.log('enterClassroom')
+      	})
 
-	classroom.addEventListener('exitClass', function (evt) {
-	    // redirect to your own custom feedback form
-	    console.log('exitClass', evt.detail)
-	});
+        classroom.addEventListener('exitClass', function (evt) {
+          console.log('exitClassroom')
+      	})
 
 	classroom.addEventListener('updateClassStatus', function (evt) {
 	    console.log('updateClassStatus', evt.detail)
