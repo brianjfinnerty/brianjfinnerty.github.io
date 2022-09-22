@@ -31,7 +31,8 @@
             'username': params.username || userName, // Eg. "Test Widget Teacher",	
             'publicKey': '63d2dd20e7557161942c53e4',
       	    'userType': userType,	
-      	    'instantClass': true
+      	    'instantClass': true,
+	    'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
 	const classroom = new VirtualClassroom('#app', lcConf, {
   		'settings.show_class_feedback': false,
@@ -63,6 +64,10 @@
 	
 	classroom.addEventListener('whiteboardAction', function (evt) {
           console.log('whiteboardAction', evt.detail)
+      	});	
+	
+	classroom.addEventListener('apiConfigError', function (evt) {
+          console.log('apiConfigError', evt)
       	})
 	</script>
 
