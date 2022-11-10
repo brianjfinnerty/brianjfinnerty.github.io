@@ -35,7 +35,7 @@
       	    'instantClass': true,
 	    'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
-	const recording = true;
+	const recording = false;
 	const classroom = new VirtualClassroom('#app', lcConf, {
 		'settings.class_control_button': true,
 		'settings.show_class_feedback': false,
@@ -43,7 +43,7 @@
 		'settings.enter_when_admitted': false,
 		'settings.enter_in_progress': false,
 		// 'settings.embedded_whiteboard': true
-		'video.room_recording': false,
+		'video.room_recording': recording,
 		'video.videoprovider': 'agora'
 	});
 		
