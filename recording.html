@@ -23,12 +23,13 @@
   const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
   
         const lcConf = {
-            'token': params.token || token, // Eg. "first-test-room-token"
-            'userid': params.userId || '1234', // Eg. "12345G"
-            'username': userName, // Eg. "Test Widget Teacher", 
-            'publicKey': params.publickey || '63d2dd20e7557161942c53e4'
+            'token': 'b6c47447-a349-4e78-b6fe-1a2d1a5db4a5', // Eg. "first-test-room-token"
+            'userid': '587383', // Eg. "12345G"
+            'username': 'dev.learncube', // Eg. "Test Widget Teacher", 
+            'publicKey': 'd7dd65b25104a15e422a8651',
+            'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
-  const classroom = new VcRecording('#app', lcConf, {});
+  const recording = new VcRecording('#app', lcConf, {'video.videoprovider': 'agora'});
   </script>
 
    
