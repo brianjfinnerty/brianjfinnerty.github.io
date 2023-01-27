@@ -36,7 +36,8 @@
 	    'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
 	const recording = false;
-	const classroom = new VirtualClassroom('#app', lcConf, {
+	
+	const classConf = {
 		'settings.class_control_button': true,
 		'settings.show_class_feedback': false,
 		'settings.allow_skip_onboarding': true,
@@ -45,7 +46,9 @@
 		// 'settings.embedded_whiteboard': true
 		// 'video.room_recording': recording,
 		// 'video.videoprovider': 'twilio'
-	});
+	}
+		
+	const classroom = new VirtualClassroom('#app', lcConf, classConf);
 		
 	classroom.addEventListener('enterClass', function (evt) {
           if (recording) {
@@ -75,6 +78,27 @@
 	classroom.addEventListener('apiConfigError', function (evt) {
           console.log('apiConfigError', evt)
       	})
+		
+	function dynoToken (tok) {
+		// classroom.dispatchEvent(new CustomEvent('endClass'))
+		classroom.dispatchEvent(new CustomEvent('exitClass'))
+
+		// setTimeout(() => {
+		//     app.$destroy()
+		// }, 400)
+
+		setTimeout(() => {
+		    const newConf = {
+			...lcConf, 'token': tok
+		    }
+		    document.body.removeChild(document.querySelector('#lc-app'))
+		    const newChild = document.createElement('div')
+		    newChild.id = 'app'
+		    document.body.appendChild(newChild)
+		    classroom = new VirtualClassroom(newChild, newConf, classConf)
+		}, 800)
+
+	    }	
 	</script>
 
    
