@@ -37,8 +37,8 @@
         }
 	
 	const litteraConf = {
-            'token': 'auto-compile-test', // Eg. "first-test-room-token"
-            'userid': '587384', // Eg. "12345G"
+            'token': params.token || token, // Eg. "first-test-room-token"
+            'userid': params.userId || '587384', // Eg. "12345G"
             'username': 'testing.learncube', // Eg. "Test Widget Teacher", 
             'publicKey': '3edf5071762de714fc5b3b2c',
 	    'userType': userType,
