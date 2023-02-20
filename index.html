@@ -35,7 +35,15 @@
       	    'instantClass': true,
 	    'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
-	const recording = false;
+	
+	const litteraConf = {
+            'token': 'auto-compile-test', // Eg. "first-test-room-token"
+            'userid': '587384', // Eg. "12345G"
+            'username': 'testing.learncube', // Eg. "Test Widget Teacher", 
+            'publicKey': '3edf5071762de714fc5b3b2c',
+            'validateUrl': 'http://localhost:3000/get-valid-token/'
+        }
+	const recording = true;
 	
 	const classConf = {
 		'settings.class_control_button': true,
@@ -45,11 +53,11 @@
 		'settings.enter_in_progress': false,
 		'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'}
 		// 'settings.embedded_whiteboard': true
-		// 'video.room_recording': recording,
-		// 'video.videoprovider': 'twilio'
+		'video.room_recording': recording,
+		'video.videoprovider': 'twilio'
 	}
 		
-	const classroom = new VirtualClassroom('#app', lcConf, classConf);
+	const classroom = new VirtualClassroom('#app', litteraConf, classConf);
 		
 	classroom.addEventListener('enterClass', function (evt) {
           if (recording) {
