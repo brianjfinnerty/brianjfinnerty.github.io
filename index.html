@@ -36,15 +36,15 @@
 	    'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
 	
-	/* const litteraConf = {
-            'token': params.token || token, // Eg. "first-test-room-token"
-            'userid': params.userId || '587384', // Eg. "12345G"
-            'username': 'testing.learncube', // Eg. "Test Widget Teacher", 
-            'publicKey': '3edf5071762de714fc5b3b2c',
-	    'userType': userType,
-	    'instantClass': true,
+	const litteraConf = {
+            'token': 'cb1e49da-4202-4894-9774-adfd445ee1cc', // Eg. "first-test-room-token"
+            'userid': 'cb1e49da-4202-4894-9774-adfd445ee1cc'
+            'username': 'production.learncube', // Eg. "Test Widget Teacher", 
+            'publicKey': '9579e27751756ed4addcd787',
+	    'userType': 'teacher',
+	    'instantClass': false,
             'validateUrl': 'http://localhost:3000/get-valid-token/'
-        } */
+        }
 	const recording = true;
 	
 	const classConf = {
@@ -53,13 +53,13 @@
 		'settings.allow_skip_onboarding': true,
 		'settings.enter_when_admitted': false,
 		'settings.enter_in_progress': false,
-		// 'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'},
+		'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'},
 		// 'settings.embedded_whiteboard': true
 		// 'video.room_recording': recording,
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	const classroom = new VirtualClassroom('#app', lcConf, classConf);
+	const classroom = new VirtualClassroom('#app', litteraConf, classConf);
 		
 	/* classroom.addEventListener('enterClass', function (evt) {
           if (recording) {
