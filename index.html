@@ -4,12 +4,12 @@
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Virtual Classroom Widget</title>
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.css?ttpp">
-  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.js?ttpp"></script>
+  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.css?ttpp">
+  <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.js?ttpp"></script-->
  	
 	
-  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/api/client/css/app.css?qqq">	
-  <script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/api/client/js/app.js?qqq"></script-->
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/api/client/css/app.css?qqqp">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/api/client/js/app.js?qqqp"></script>
 </head>
 <body>
 	<div id="app"></div>
@@ -53,13 +53,13 @@
 		'settings.allow_skip_onboarding': true,
 		'settings.enter_when_admitted': false,
 		'settings.enter_in_progress': false,
-		'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'},
+		// 'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'},
 		// 'settings.embedded_whiteboard': true
 		// 'video.room_recording': recording,
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	const classroom = new VirtualClassroom('#app', litteraConf, classConf);
+	const classroom = new VirtualClassroom('#app', lcConf, classConf);
 		
 	/* classroom.addEventListener('enterClass', function (evt) {
           if (recording) {
