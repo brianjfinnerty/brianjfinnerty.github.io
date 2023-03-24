@@ -4,23 +4,31 @@
   <meta charset=utf-8>
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Recording Widget</title>
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/dev/client/css/app.css">
-  <script type="text/javascript" src="https://static.learncube.net/vc/library/dev/client/js/app.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/library/api/client/css/app.css?1">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/library/api/client/js/app.js?1"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
-        // Global variables for use in the vue app below
-        let username = "brianos";
-        let userId = 455197;
+        const search = location.search.substring(1);
+        let params;
+        try {
+          params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+        } catch (err) {
+          params = {}
+        }
+
+        const userType = params.userType || 'student'
+        const userName = params.username || 'Test ' + userType
+        const userId = params.userId || '1234'
         const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
+
         const lcConf = {
-            'token': token,
-            'userid': userId.toString(), // Eg. 12345G
-            'username': username, // Eg. 'Test Widget Teacher',
-            'validateUrl': 'https://api.learncube.com/vc/api/validate/',
-            'publicKey': '63d2dd20e7557161942c53e4',
-            'learncubeUser': true
+          'userid': userId, // Eg. "12345G"
+          'username': userName, // Eg. "Test Widget Teacher",	
+          'publicKey': '63d2dd20e7557161942c53e4',
+          'userType': userType,	
+          'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
         const lcLibrary = new Library('#lc-lib', lcConf)
   </script>
