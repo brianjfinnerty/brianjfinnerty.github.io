@@ -10,13 +10,6 @@
 <body>
   <div id="lc-lib"></div>
   <script>
-        const search = location.search.substring(1);
-        let params;
-        try {
-          params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
-        } catch (err) {
-          params = {}
-        }
 
         const lcConf = {
             'userid': '4622817', // Eg. "12345G"
