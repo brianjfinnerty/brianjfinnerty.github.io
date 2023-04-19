@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube Library Widget</title>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/library/apisanity/client/css/app.css?apiuser4">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/library/apisanity/client/js/app.js?apiuser4"></script>
+</head>
+<body>
+  <div id="lc-lib"></div>
+  <script>
+        const search = location.search.substring(1);
+        let params;
+        try {
+          params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+        } catch (err) {
+          params = {}
+        }
+
+        const lcConf = {
+            'userid': '4622817', // Eg. "12345G"
+            'username': 'Riley', // Eg. "Test Widget Teacher",
+            'publicKey': '0f7848b644fedf06cd3f9302', //'63d2dd20e7557161942c53e4',
+            'userType': 'teacher',
+            'validateUrl': 'https://vcapi2.learncube.com/local-test/auth/'
+        }
+        const lcLibrary = new Library('#lc-lib', lcConf)
+  </script>
+
+   
+
+</body>
+</html>
