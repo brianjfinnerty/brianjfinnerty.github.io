@@ -24,7 +24,7 @@
 
 	const userType = params.userType || 'student'
 	const userName = 'Test ' + userType
-	const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
+	const token = (new Date()).toDateString().toLowerCase().split(' ').join('-')
 	
         const lcConf = {
             'token': params.token || token, // Eg. "first-test-room-token"
@@ -33,7 +33,8 @@
             'publicKey': params.publicKey || '63d2dd20e7557161942c53e4',
       	    'userType': userType,	
       	    'instantClass': true,
-            'validateUrl': 'http://localhost:3000/get-valid-token/'
+            'validateUrl': 'http://localhost:3000/get-valid-token/',
+	    'customTitle': token	
         }
 	
 	const litteraConf = {
