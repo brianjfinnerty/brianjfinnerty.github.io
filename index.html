@@ -64,17 +64,17 @@
 	let classroom = new VirtualClassroom('#app', lcConf, classConf);
 		
 	classroom.addEventListener('enterClass', function (evt) {
-          alert('enter classroom', evt.detail)	
+          alert('enter classroom')	
           console.log('enterClassroom', evt.detail)
       	})
 
         classroom.addEventListener('exitClass', function (evt) {
-	  alert('exit classroom', evt.detail)	
+	  alert('exit classroom')	
           console.log('exitClassroom', evt.detail)
       	})
 
 	classroom.addEventListener('updateClassStatus', function (evt) {
-	    alert(updateClassStatus', evt.detail)
+	    alert(updateClassStatus')
 	    console.log('updateClassStatus', evt.detail)
 	});
 		
