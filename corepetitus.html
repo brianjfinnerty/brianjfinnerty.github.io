@@ -1,0 +1,128 @@
+
+
+Live pamoka
+<div id="virtual-classroom-client"></div>
+
+
+
+    <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.css">
+    <style>
+        .el-tabs__nav-wrap.is-left{
+            height: 60% !important;
+        }
+        .participants-tabs .el-tabs__nav.is-top-start{
+            display: flex;
+        }
+        .participants-tabs .el-tabs__nav.is-top-start .el-tabs__item{
+            display: flex;
+            align-items: center;
+        }
+        .toast {
+            opacity: 1 !important;
+        }
+        .participant-wrapper .track-wrapper > div{
+            max-height: 0px;
+        }
+        .toast-middle-screen{
+            top: 50%;
+            left: 50%;
+            transform: translate(-24%, -50%);
+        }
+    </style>
+    <link rel="stylesheet" href="/assets/learncube_extend.31501a77.css">
+    <script src="/assets/runtime.d76e7cf3.js"></script><script src="/assets/learncube_extend.a254681a.js"></script>
+    <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.js"></script>
+    <script>
+        const sessionId = `6540c9df33f528.62502235`
+        const classConfig = {
+            'lesson_materials.can_upload': true,
+            'lesson_materials.enable_screenshare': true,
+            'lesson_materials.enable_doc_cam': true,
+            'settings.allow_skip_onboarding': true,
+            'settings.show_class_feedback': false,
+            'settings.class_control_button': true,
+            'settings.dashboardUrl': 'https://www.app.corepetitus.lt',
+            'whiteboard.enable_math_tools': true,
+            'whiteboard.can_edit_all': true,
+        }
+        const classroom = new VirtualClassroom('#virtual-classroom-client',
+            {
+                'token': `lessonTEST266033`, // Eg. "first-test-room-token"
+                'userid': `teacherTEST1`, // Eg. "12345G"
+                'username': `teacherTEST1`, // Eg. "Test Widget Teacher",
+                'publicKey': `3c7ba41223fe6bbc852ebccb`,
+                'userType': `teacher`,
+                'validateUrl': '/learncubeToken',
+                'instantClass': true
+            },classConfig);
+
+            //
+
+        classroom.addEventListener('enterBreakoutRoom', (evt) => {
+            console.log(evt.detail)
+        })
+        classroom.addEventListener('enterClass', (evt) => {
+            
+            fetch(`/learncube_status/266033`+'?sessionId='+ sessionId +'&action=enter')
+
+            initiateWebsocket()
+            // $('.header-buttons .btn-group').prepend("<button class='el-tooltip item btn btn-info test-btn'>testas</button>")
+            toastr.options = {
+                "timeOut": "0",
+                "extendedTimeOut": "0",
+                "debug": false,
+                "positionClass": "toast-middle-screen",
+                "closeButton": true,
+            }
+            // $('.test-btn').on('click',function (e){
+            //     console.log("opaaa")
+            //     toastr.success('testukas')
+            // })
+            initiateKeepAlive();
+        })
+        classroom.addEventListener('exitClass', (evt) => {
+            let url = `/learncube_status/266033`
+            fetch(`/learncube_status/266033`+'?sessionId='+ sessionId +'&action=exit')
+        })
+        classroom.addEventListener('updateClassStatus', (evt) => {
+            // alert(evt.detail)
+            // alert("class status chaged")
+        })
+
+        function ping(){
+            let url = `/learncube_ping`
+            let formData = new FormData();
+            formData.append('uniqid', sessionId);
+            formData.append('lesson', '266033');
+            fetch(url, {
+                method: "POST",
+                body: formData,
+            })
+        }
+
+        function initiateKeepAlive(){
+            ping();
+            setInterval(function(){
+                ping()
+            }, 5000)
+            // }, 30000)
+        }
+        function initiateWebsocket(){
+            console.log(`learncube_lesson/266033`)
+
+            const eventSource = new EventSource("https\u003A\/\/mercure.juodaskodas.lt\/.well\u002Dknown\/mercure\u003Ftopic\u003Dlearncube_lesson\u00252F266033");
+            eventSource.onmessage = event => {
+                event = JSON.parse(event.data);
+                console.log(event);
+                if(event.action == "prompt"){
+                    toastr.info(event.message)
+                }
+                if(event.action == "missed"){
+                    window.location.href = `/me/lesson/kicked?reason=${event.action}`
+                }
+                if(event.action == "moved"){
+                    window.location.href = `/me/lesson/kicked?reason=${event.action}&from=${event.from}&to=${event.to}`
+                }
+            }
+        }
+    </script>
