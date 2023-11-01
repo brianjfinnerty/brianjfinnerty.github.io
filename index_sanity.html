@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube Virtual Classroom Widget</title>
+ 	
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css?mhn">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js?mhn"></script>
+</head>
+<body>
+	<div id="app"></div>
+	<script>
+        const search = location.search.substring(1);
+	let params;
+	try {
+		params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+	} catch (err) {
+		params = {}
+	}
+
+	const userType = params.userType || 'student'
+	const userName = 'Test ' + userType
+	const token = (new Date()).toDateString().toLowerCase().split(' ').join('-')
+	
+        const lcConf = {
+            'token': params.token || token, // Eg. "first-test-room-token"
+            'userid': params.userId || '1234', // Eg. "12345G"
+            'username': params.username || userName, // Eg. "Test Widget Teacher",	
+            'publicKey': params.publicKey || '63d2dd20e7557161942c53e4',
+      	    'userType': userType,	
+      	    'instantClass': true,
+            // 'validateUrl': 'http://localhost:3000/get-valid-token/',
+	    'validateUrl': 'https://vcapi2.learncube.com/local-test/auth/',
+	    'customTitle': 'Alert live'	
+        }
+	
+	/* const litteraConf = {
+            'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
+            'userid': 'cb1e49da-4202-4894-9774-adfd445ee1cc',
+            'username': 'Amanda Erdman', // Eg. "Test Widget Teacher", 
+            'publicKey': '9579e27751756ed4addcd787',
+	    'userType': 'teacher',
+	    'instantClass': false,
+            'validateUrl': 'http://localhost:3000/get-valid-token/'
+        }
+	const recording = true; */
+	
+	const classConf = {
+		'settings.class_control_button': true,
+		'settings.show_class_feedback': false,
+		'settings.allow_skip_onboarding': true,
+		'settings.enter_when_admitted': false,
+		'settings.enter_in_progress': false,
+		'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'},
+		'lesson_materials.folder_ui': false
+		// 'settings.embedded_whiteboard': true
+		// 'video.room_recording': recording,
+		// 'video.videoprovider': 'twilio'
+	}
+		
+	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+		
+	classroom.addEventListener('enterClass', function (evt) {
+          console.log('enterClassroom', evt.detail)
+      	})
+
+        classroom.addEventListener('exitClass', function (evt) {
+          console.log('exitClassroom', evt.detail)
+      	})
+
+	classroom.addEventListener('updateClassStatus', function (evt) {
+	    console.log('updateClassStatus', evt.detail)
+	});
+		
+	classroom.addEventListener('enterBreakoutRoom', function (evt) {
+	    const breakoutRoomToken = event.detail.token;
+	    const breakoutRoomUser = event.detail.userid;
+	    const breakoutRoom = `https://brianjfinnerty.github.io/index.html?userId=${params.userId}&token=${breakoutRoomToken}&userType=${userType}&username=${params.username}`
+	    window.location = breakoutRoom
+	});	
+	
+	classroom.addEventListener('whiteboardAction', function (evt) {
+          console.log('whiteboardAction', evt.detail)
+      	});	
+	
+	classroom.addEventListener('apiConfigError', function (evt) {
+          console.log('apiConfigError', evt)
+      	})
+		
+	function dynoToken (tok) {
+		// classroom.dispatchEvent(new CustomEvent('endClass'))
+		classroom.dispatchEvent(new CustomEvent('leaveClass'))
+
+		setTimeout(() => {
+		    const newConf = {
+			...lcConf, 'token': tok
+		    }
+		    document.body.removeChild(document.querySelector('#lc-app'))
+		    const newChild = document.createElement('div')
+		    newChild.id = 'app'
+		    document.body.appendChild(newChild)
+		    classroom = new VirtualClassroom(newChild, newConf, classConf)
+		}, 0)
+
+	    }	
+	</script>
+
+   
+
+</body>
+</html>
