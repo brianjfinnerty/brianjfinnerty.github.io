@@ -13,7 +13,7 @@
                 transform: translate(-50%, -50%);
             }
         </style>
-        <link rel="stylesheet" href="/assets/learncube_extend.cb328387.css">
+        <link rel="stylesheet" href="https://app.corepetitus.lt/assets/learncube_extend.cb328387.css">
     
 </head>
 
@@ -21,7 +21,8 @@
     <div id="virtual-classroom-client"></div>
     </body>
 
-    <script src="/assets/runtime.5b7a9943.js"></script><script src="/assets/learncube_extend.bc0f6a9e.js"></script>
+    <script src="https://app.corepetitus.lt/assets/runtime.5b7a9943.js"></script>
+    <script src="https://app.corepetitus.lt/assets/learncube_extend.bc0f6a9e.js"></script>
     <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.js"></script>
     <script>
         const sessionId = `65e1c0406d1276.78707202`
@@ -75,8 +76,8 @@
             initiateKeepAlive();
         })
         classroom.addEventListener('exitClass', (evt) => {
-            let url = `/learncube_status/362711`
-            fetch(`/learncube_status/362711` + '?sessionId=' + sessionId + '&action=exit')
+            let url = `https://app.corepetitus.lt/learncube_status/362711`
+            fetch(`https://app.corepetitus.lt/learncube_status/362711` + '?sessionId=' + sessionId + '&action=exit')
         })
         classroom.addEventListener('updateClassStatus', (evt) => {
             // alert(evt.detail)
@@ -113,10 +114,10 @@
                     toastr.info(event.message)
                 }
                 if (event.action == "missed") {
-                    window.location.href = `/me/lesson/kicked?reason=${event.action}`
+                    window.location.href = `https://app.corepetitus.lt/me/lesson/kicked?reason=${event.action}`
                 }
                 if (event.action == "moved") {
-                    window.location.href = `/me/lesson/kicked?reason=${event.action}&from=${event.from}&to=${event.to}`
+                    window.location.href = `https://app.corepetitus.lt/me/lesson/kicked?reason=${event.action}&from=${event.from}&to=${event.to}`
                 }
             }
         }
