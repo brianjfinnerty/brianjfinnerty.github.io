@@ -31,7 +31,8 @@
           'username': params.username || userName, // Eg. "Test Widget Teacher",  
           'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
           'userType': userType, 
-          'validateUrl': 'http://localhost:3000/get-valid-token/'
+          'validateUrl': 'http://localhost:3000/get-valid-token/',
+          'email': params.email
       }
       
       const homework = new VcHomework('#app', lcConf, {'whiteboard.enable_math_tools': true});
