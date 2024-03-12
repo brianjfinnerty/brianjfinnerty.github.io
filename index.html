@@ -41,6 +41,16 @@
 	    'customTitle': 'Email Test',
 	    'email': params.email || null	
         }
+
+	const preplyConf = {
+	    "publicKey": "0f7848b644fedf06cd3f9302",
+	    "token": 16955465,
+	    "userid": 3097673,
+	    "username": "Brian",
+	    "userType": "teacher",
+	    "instantClass": true,
+	    "validateUrl": "http://localhost:3000/get-valid-token/",
+	}	
 	
 	/* const litteraConf = {
             'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
@@ -66,7 +76,7 @@
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+	let classroom = new VirtualClassroom('#app', preplyConf, classConf);
 		
 	classroom.addEventListener('enterClass', function (evt) {
           console.log('enterClassroom', evt.detail)
