@@ -76,7 +76,7 @@
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', preplyConf, classConf);
+	let classroom = new VirtualClassroom('#app', lcConf, classConf);
 		
 	classroom.addEventListener('enterClass', function (evt) {
           console.log('enterClassroom', evt.detail)
