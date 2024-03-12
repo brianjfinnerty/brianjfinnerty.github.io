@@ -37,6 +37,16 @@
 	    // 'validateUrl': 'https://vcapi2.learncube.com/local-test/auth/',
 	    'email': params.email || null	
         }
+
+	const preplyConf = {
+	    "publicKey": "0f7848b644fedf06cd3f9302",
+	    "token": 16955465,
+	    "userid": 3097673,
+	    "username": "Brian",
+	    "userType": "teacher",
+	    "instantClass": true,
+	    "validateUrl": "http://localhost:3000/get-valid-token/",
+	}
 	
 	/* const litteraConf = {
             'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
@@ -56,13 +66,13 @@
 		'settings.enter_when_admitted': false,
 		'settings.enter_in_progress': false,
 		// 'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'},
-		'lesson_materials.folder_ui': true
+		// 'lesson_materials.folder_ui': true
 		// 'settings.embedded_whiteboard': true
 		// 'video.room_recording': recording,
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+	let classroom = new VirtualClassroom('#app', preplyConf, classConf);
 		
 	classroom.addEventListener('enterClass', function (evt) {
           console.log('enterClassroom', evt.detail)
