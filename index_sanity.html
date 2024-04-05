@@ -5,16 +5,19 @@
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Virtual Classroom Widget</title>
  	
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css?mhjjn">	
-  <script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js?mhjjn"></script>
+  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css?mhjjn">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js?mhjjn"></script-->
 
   <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/virtualclassroom.3.0.0.css">
   <script type="text/javascript" src="https://static.learncube.net/client/virtualclassroom.3.0.0.js"></script-->
+<link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/client/css/app.css" />
+<script type="00bb618d2d845e58fd74c9b7-text/javascript" src="https://static.learncube.net/vc/virtualclassroom/client/js/app.js"></script>
+
 </head>
 <body>
 	<div id="app"></div>
 	<script>
-        const search = location.search.substring(1);
+         const search = location.search.substring(1);
 	let params;
 	try {
 		params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
@@ -33,8 +36,8 @@
             'publicKey': params.publicKey || '63d2dd20e7557161942c53e4',
       	    'userType': userType,	
       	    'instantClass': true,
-            'validateUrl': 'http://localhost:3000/get-valid-token/',
-	    // 'validateUrl': 'https://vcapi2.learncube.com/local-test/auth/',
+	    'validateUrl': 'https://vcapi2.learncube.com/local-test/auth/',
+	    'customTitle': 'Email Test',
 	    'email': params.email || null	
         }
 
@@ -46,7 +49,7 @@
 	    "userType": "teacher",
 	    "instantClass": true,
 	    "validateUrl": "http://localhost:3000/get-valid-token/",
-	}
+	}	
 	
 	/* const litteraConf = {
             'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
@@ -64,42 +67,19 @@
 		'settings.show_class_feedback': false,
 		'settings.allow_skip_onboarding': true,
 		'settings.enter_when_admitted': false,
-		'settings.enter_in_progress': false,
-		// 'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'},
+		'settings.enter_in_progress': false
+		// 'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'}
 		// 'lesson_materials.folder_ui': true
 		// 'settings.embedded_whiteboard': true
 		// 'video.room_recording': recording,
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', preplyConf, classConf);
+	let classroom = new VirtualClassroom('#app', lcConf, classConf);
 		
-	classroom.addEventListener('enterClass', function (evt) {
-          console.log('enterClassroom', evt.detail)
-      	})
-
-        classroom.addEventListener('exitClass', function (evt) {
-          console.log('exitClassroom', evt.detail)
-      	})
-
-	classroom.addEventListener('updateClassStatus', function (evt) {
-	    console.log('updateClassStatus', evt.detail)
-	});
+	
 		
-	classroom.addEventListener('enterBreakoutRoom', function (evt) {
-	    const breakoutRoomToken = event.detail.token;
-	    const breakoutRoomUser = event.detail.userid;
-	    const breakoutRoom = `https://brianjfinnerty.github.io/index.html?userId=${params.userId}&token=${breakoutRoomToken}&userType=${userType}&username=${params.username}`
-	    window.location = breakoutRoom
-	});	
-	
-	classroom.addEventListener('whiteboardAction', function (evt) {
-          console.log('whiteboardAction', evt.detail)
-      	});	
-	
-	classroom.addEventListener('apiConfigError', function (evt) {
-          console.log('apiConfigError', evt)
-      	})
+
 		
 	function dynoToken (tok) {
 		// classroom.dispatchEvent(new CustomEvent('endClass'))
