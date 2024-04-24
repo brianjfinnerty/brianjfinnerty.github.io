@@ -79,8 +79,8 @@
 		
 	
 	classroom.addEventListener('enterHomework', function (evt) {
-	    const user = event.detail.user;
-	    const timestamp = event.detail.timestamp;
+	    const user = evt.detail.user;
+	    const timestamp = evt.detail.timestamp;
 	    console.log('User ' + user.username + 'entered the homework at ' + timestamp)
 	});	
 
