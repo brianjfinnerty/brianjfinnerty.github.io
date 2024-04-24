@@ -78,7 +78,11 @@
 	let classroom = new VirtualClassroom('#app', lcConf, classConf);
 		
 	
-		
+	classroom.addEventListener('enterHomework', function (evt) {
+	    const user = event.detail.user;
+	    const timestamp = event.detail.timestamp;
+	    console.log('User ' + user.username + 'entered the homework at ' + timestamp)
+	});	
 
 		
 	function dynoToken (tok) {
