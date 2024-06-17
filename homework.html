@@ -39,6 +39,10 @@
       homework.addEventListener('whiteboardAction', function (evt) {
           console.log(evt.type, evt.detail)
       });  
+
+      homework.addEventListener('updateHomeworkStatus', (evt) => {
+          console.log('updateHomeworkStatus Event', evt)
+      });
   </script>
 
    
