@@ -7,8 +7,8 @@
   <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/homework.css?op">
   <script type="text/javascript" src="https://static.learncube.net/client/homework.js?ooli"></script-->
   
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/homework/apisanity/client/css/app.css?ku">	
-  <script type="text/javascript" src="https://static.learncube.net/vc/homework/apisanity/client/js/app.js?ku"></script>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/homework/apisanity/client/css/app.css?kuf">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/homework/apisanity/client/js/app.js?kuf"></script>
 </head>
 <body>
   <div id="app"></div>
@@ -42,6 +42,10 @@
 
       homework.addEventListener('updateHomeworkStatus', (evt) => {
           console.log('updateHomeworkStatus Event', evt.detail.user.homeworkStatus)
+      });
+
+      homework.addEventListener('enterClassReview', (evt) => {
+          console.log('enterClassReview Event', evt.detail)
       });
   </script>
 
