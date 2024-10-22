@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube Virtual Classroom Widget</title>
+
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/reporting/api/client/css/app.css?oct-22-1">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/reporting/api/client/js/app.js?oct-22-1"></script>
+
+	
+</head>
+<body>
+	<div id="app"></div>
+	<script>
+        const search = location.search.substring(1);
+	let params;
+	try {
+		params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+	} catch (err) {
+		params = {}
+	}
+
+	const userType = params.userType || 'student'
+	const userName = 'Test ' + userType
+	const token = (new Date()).toDateString().toLowerCase().split(' ').join('-')
+	
+
+const edooConf = {
+    'userid': 'xxx231', // Eg. "12345G"
+    'username': 'Teacher Willim', // Eg. "Test Widget Teacher",
+    'publicKey': '976163f5669482726c94a268',
+    'userType': 'admin',
+    'validateUrl': 'http://localhost:3000/get-valid-token/'
+}
+
+
+const reporting = new VcReporting('#lc-insights', edooConf)
+		
+	
+	
+	</script>
+
+   
+
+</body>
+</html>
