@@ -7,8 +7,8 @@
   <link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/recordings.css">
   <script type="text/javascript" src="https://static.learncube.net/client/recordings.js"></script>
   
-  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/recordings/api/client/css/app.css?dec-17-1">	
-  <script type="text/javascript" src="https://static.learncube.net/vc/recordings/api/client/js/app.js?dec-17-1"></script-->
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/recordings/api/client/css/app.css?dec-17-1">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/recordings/api/client/js/app.js?dec-17-1"></script>
   
 </head>
 <body>
@@ -30,7 +30,7 @@
             'token': params.token || token, // Eg. "first-test-room-token"
             'userid': params.userId || '1234', // Eg. "12345G"
             'username': params.username || userName, // Eg. "Test Widget Teacher",	
-            'publicKey': '63d2dd20e7557161942c53e4',
+            'publicKey': params.publicKey || '63d2dd20e7557161942c53e4'
       	    'userType': userType,	
       	    'instantClass': true,
 	    'validateUrl': 'http://localhost:3000/get-valid-token/'
