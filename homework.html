@@ -35,7 +35,8 @@
           'email': params.email
       }
       
-      const homework = new VcHomework('#app', lcConf, {'whiteboard.enable_math_tools': true});
+      const homework = new VcHomework('#app', lcConf, {'whiteboard.enable_math_tools': true, 'settings.embedded_whiteboard': true});
+    
       homework.addEventListener('whiteboardAction', function (evt) {
           console.log(evt.type, evt.detail)
       });  
