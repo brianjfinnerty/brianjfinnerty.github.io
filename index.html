@@ -49,7 +49,17 @@
 	    "userType": "teacher",
 	    "instantClass": true,
 	    "validateUrl": "http://localhost:3000/get-valid-token/",
-	}	
+	}
+
+	const wefitConf = {
+	    "publicKey": "afddc7ad02af2280c9caf93a",
+	    "token": 'C0C652FE1F13EB35B4F14FC50D155EFA',
+	    "userid": 879839,
+	    "username": "rremaclewefitgroupcom",
+	    "userType": "teacher",
+	    "instantClass": true,
+	    "validateUrl": "http://localhost:3000/get-valid-token/",
+	}
 	
 	/* const litteraConf = {
             'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
@@ -78,7 +88,7 @@
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+	let classroom = new VirtualClassroom('#app', wefitConf, classConf);
 		
 	
 	classroom.addEventListener('enterHomework', function (evt) {
