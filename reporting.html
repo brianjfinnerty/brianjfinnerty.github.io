@@ -5,8 +5,8 @@
   <meta name=viewport content="width=device-width,initial-scale=1">
   <title>Learncube Virtual Classroom Widget</title>
 
-  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/reporting/api/client/css/app.css?nov-4-1">	
-  <script type="text/javascript" src="https://static.learncube.net/vc/reporting/api/client/js/app.js?nov-4-1"></script>
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/reporting/apisanity/client/css/app.css?jul-4-25">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/reporting/apisanity/client/js/app.js?jul-4-25"></script>
 
 	
 </head>
@@ -42,8 +42,15 @@ const mlConf = {
 	'validateUrl': 'http://localhost:3000/get-valid-token/'
 }
 
+const liveLinguConf = {
+    'userid': 'admin-1', // Eg. "12345G"
+    'username': 'Live Lingua', // Eg. "Test Widget Teacher",
+    'publicKey': '29fcf12271dc18820d9ac87a',
+    'userType': 'admin',
+    'validateUrl': 'http://localhost:3000/get-valid-token/'
+}
 
-const reporting = new VcReporting('#lc-insights', mlConf)
+const reporting = new VcReporting('#lc-insights', liveLinguConf)
 		
 	
 	
