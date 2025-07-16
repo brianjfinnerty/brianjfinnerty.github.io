@@ -14,7 +14,7 @@ tin<!DOCTYPE html>
 </head>
 <body>
 	<div id="lc-insights"></div>
-	<script>
+<script>
         const search = location.search.substring(1);
 	let params;
 	try {
@@ -58,7 +58,17 @@ const lcConf = {
 		 
 
 const reporting = new VcReporting('#lc-insights', lcConf)
+
+function handleEvent (evt, app) {
+    const user = evt.detail.user;
+    const token = evt.detail.token
+    const timestamp = evt.detail.timestamp;
+    console.log('User ' + user.username + ' entered the ' + app + ' of class' + token +' at ' + timestamp)
+}		
 		
+reporting.addEventListener('enterClassReview', (evt) => handleEvent(evt, 'class review'))
+reporting.addEventListener('enterHomework', (evt) => handleEvent(evt, 'homework'))
+reporting.addEventListener('enterRecording', (evt) => handleEvent(evt, 'recording'))
 	
 	</script>
 
