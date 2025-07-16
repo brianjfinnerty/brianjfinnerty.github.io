@@ -22,10 +22,6 @@ tin<!DOCTYPE html>
 	} catch (err) {
 		params = {}
 	}
-
-	const userType = params.userType || 'student'
-	const userName = 'Test ' + userType
-	const token = (new Date()).toDateString().toLowerCase().split(' ').join('-')
 	
 
 const edooConf = {
@@ -53,16 +49,16 @@ const liveLinguConf = {
 }
 
 const lcConf = {
-    'userid': 'admin', // Eg. "12345G"
-    'username': 'AdminBrian', // Eg. "Test Widget Teacher",
-    'publicKey': '63d2dd20e7557161942c53e4',
-    'userType': 'admin',
+    'userid': params.userId || 'admin', 
+    'username': params.username || 'AdminBrian',  
+    'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
+    'userType': userType || 'admin',
     'validateUrl': 'http://localhost:3000/get-valid-token/'		
 }		
+		 
 
 const reporting = new VcReporting('#lc-insights', lcConf)
 		
-	
 	
 	</script>
 
