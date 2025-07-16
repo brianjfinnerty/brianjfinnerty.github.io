@@ -52,7 +52,15 @@ const liveLinguConf = {
     'validateUrl': 'http://localhost:3000/get-valid-token/'
 }
 
-const reporting = new VcReporting('#lc-insights', liveLinguConf)
+const lcConf = {
+    'userid': 'admin', // Eg. "12345G"
+    'username': 'AdminBrian', // Eg. "Test Widget Teacher",
+    'publicKey': '63d2dd20e7557161942c53e4',
+    'userType': 'admin',
+    'validateUrl': 'http://localhost:3000/get-valid-token/'		
+}		
+
+const reporting = new VcReporting('#lc-insights', lcConf)
 		
 	
 	
