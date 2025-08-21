@@ -1,1 +1,72 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube Library Widget</title>
+  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/library.css?aug-13-2">	
+  <script type="text/javascript" src="https://static.learncube.net/client/library.js?aug-13-2"></script-->
+
+
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/library/apisanity/client/css/app.css?aug-14-1">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/library/apisanity/client/js/app.js?aug-14-1"></script>
+</head>
+<body>
+  <div id="lc-lib"></div>
+  <script>
+        const search = location.search.substring(1);
+        let params;
+        try {
+          params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+        } catch (err) {
+          params = {}
+        }
+
+        const lcConf = {
+            'userid': params.userId || '558', // Eg. "12345G"
+            'username': params.username || 'brianfinnerty', // Eg. "Test Widget Teacher",
+            'publicKey': params.publicKey || '63d2dd20e7557161942c53e4',
+            'userType': params.userType || 'student',
+            'validateUrl': 'http://localhost:3000/get-valid-token/'
+        }
+
+        const edooConf = {
+            'userid': 'xxx231', // Eg. "12345G"
+            'username': 'Teacher Willim', // Eg. "Test Widget Teacher",
+            'publicKey': '976163f5669482726c94a268',
+            'userType': 'admin',
+            'validateUrl': 'http://localhost:3000/get-valid-token/'
+        }
+
+    	const preplyConf = {
+  	    "publicKey": "0f7848b644fedf06cd3f9302",
+  	    "userid": 9620187,
+  	    "username": "Zack",
+  	    "userType": "student",
+  	    "validateUrl": "http://localhost:3000/get-valid-token/",
+  	  }
+
+      const ceranConf = {
+  	    "publicKey": "b7b2532bd9afdbcaaddb17da",
+  	    "userid": "1729063512870x622341788984567900",
+  	    "username": "Teacher Gmail Elodie",
+  	    "userType": "teacher",
+  	    "validateUrl": "http://localhost:3000/get-valid-token/",
+  	  }
+
+      const liveLinguConf = {
+          'userid': 'admin-1', // Eg. "12345G"
+          'username': 'Live Lingua', // Eg. "Test Widget Teacher",
+          'publicKey': '29fcf12271dc18820d9ac87a',
+          'userType': 'admin',
+          'validateUrl': 'http://localhost:3000/get-valid-token/'
+      }
+    
+        const lcLibrary = new Library('#lc-lib', lcConf)
+  </script>
+
+   
+
+</body>
+</html>
