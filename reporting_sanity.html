@@ -1,0 +1,78 @@
+tin<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube Virtual Classroom Widget</title>
+
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/reporting/apisanity/client/css/app.css?aug-25-25-1">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/reporting/apisanity/client/js/app.js?aug-25-25-1"></script>
+
+  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/reporting.css">
+  <script type="text/javascript" src="https://static.learncube.net/client/reporting.js"></script-->
+	
+</head>
+<body>
+	<div id="lc-insights"></div>
+<script>
+        const search = location.search.substring(1);
+	let params;
+	try {
+		params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+	} catch (err) {
+		params = {}
+	}
+	
+
+const edooConf = {
+    'userid': 'xxx231', // Eg. "12345G"
+    'username': 'Teacher Willim', // Eg. "Test Widget Teacher",
+    'publicKey': '976163f5669482726c94a268',
+    'userType': 'admin',
+    'validateUrl': 'http://localhost:3000/get-valid-token/'
+}
+
+const mlConf = {
+	'userid': '1437', // Eg. "12345G"
+	'username': 'Bogumiła Janicka', // Eg. "Test Widget Teacher",
+	'publicKey': 'eae098fad8fc90724e3b6415',
+	'userType': 'admin',
+	'validateUrl': 'http://localhost:3000/get-valid-token/'
+}
+
+const liveLinguConf = {
+    'userid': 'admin-1', // Eg. "12345G"
+    'username': 'Live Lingua', // Eg. "Test Widget Teacher",
+    'publicKey': '29fcf12271dc18820d9ac87a',
+    'userType': 'admin',
+    'validateUrl': 'http://localhost:3000/get-valid-token/'
+}
+
+const lcConf = {
+    'userid': params.userId || 'admin', 
+    'username': params.username || 'AdminBrian',  
+    'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
+    'userType': 'admin',
+    'validateUrl': 'http://localhost:3000/get-valid-token/'		
+}		
+		 
+
+const reporting = new VcReporting('#lc-insights', lcConf)
+
+function handleEvent (evt, app) {
+    const user = evt.detail.user;
+    const token = evt.detail.token
+    const timestamp = evt.detail.timestamp;
+    console.log('User ' + user.username + ' entered the ' + app + ' of class' + token +' at ' + timestamp)
+}		
+		
+reporting.addEventListener('enterClassReview', (evt) => handleEvent(evt, 'class review'))
+reporting.addEventListener('enterHomework', (evt) => handleEvent(evt, 'homework'))
+reporting.addEventListener('enterRecording', (evt) => handleEvent(evt, 'recording'))
+	
+	</script>
+
+   
+
+</body>
+</html>
