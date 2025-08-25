@@ -33,7 +33,7 @@
       	    'userType': userType,	
       	    'instantClass': true,
 		    'validateUrl': 'http://localhost:3000/get-valid-token/',
-		    'customTitle': 'Email Test',
+		    'customTitle': params.customTitle || 'Api Class: ' + (params.username || userName),
 		    'email': params.email || null	
         }
 
