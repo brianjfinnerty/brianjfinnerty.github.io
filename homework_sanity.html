@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>Learncube Homework Widget</title>
+  <!--link rel="stylesheet" type="text/css" href="https://static.learncube.net/client/homework.css?jan-16-1">
+  <script type="text/javascript" src="https://static.learncube.net/client/homework.js?jan-16-1"></script-->
+  
+  <link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/homework/apisanity/client/css/app.css?sep-10-2">	
+  <script type="text/javascript" src="https://static.learncube.net/vc/homework/apisanity/client/js/app.js?sep-10-2"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+       const search = location.search.substring(1);
+      let params;
+      try {
+        params = JSON.parse('{"' + decodeURI(search).replace(/"/g, '\\"').replace(/&/g, '","').replace(/=/g,'":"') + '"}')
+      } catch (err) {
+        params = {}
+      }
+
+      const userType = params.userType || 'student'
+      const userName = 'Test ' + userType
+      const token = 'local-' + (new Date()).toDateString().toLowerCase().split(' ').join('-')
+
+      const lcConf = {
+          'token': params.token || token, // Eg. "first-test-room-token"
+          'userid': params.userId || '1234', // Eg. "12345G"
+          'username': params.username || userName, // Eg. "Test Widget Teacher",  
+          'publicKey': params.publickey || '63d2dd20e7557161942c53e4',
+          'userType': userType, 
+          'validateUrl': 'http://localhost:3000/get-valid-token/',
+          'email': params.email
+      }
+      
+      const homework = new VcHomework('#app', lcConf, {'whiteboard.enable_math_tools': true, 'settings.embedded_whiteboard': true});
+    
+      homework.addEventListener('whiteboardAction', function (evt) {
+          console.log(evt.type, evt.detail)
+      });  
+
+      homework.addEventListener('updateHomeworkStatus', (evt) => {
+          console.log('updateHomeworkStatus Event', evt.detail.user.homeworkStatus)
+      });
+
+      homework.addEventListener('enterClassReview', (evt) => {
+          console.log('enterClassReview Event', evt.detail)
+      });
+  </script>
+
+   
+
+</body>
+</html>
