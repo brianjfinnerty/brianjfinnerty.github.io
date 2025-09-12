@@ -34,8 +34,17 @@
           'validateUrl': 'http://localhost:3000/get-valid-token/',
           'email': params.email
       }
+
+      const liveLinguConf = {
+          'token': 'group-class-44',
+          'userid': 'admin-1', // Eg. "12345G"
+          'username': 'Live Lingua', // Eg. "Test Widget Teacher",
+          'publicKey': '29fcf12271dc18820d9ac87a',
+          'userType': 'admin',
+          'validateUrl': 'http://localhost:3000/get-valid-token/'
+      }
       
-      const homework = new VcHomework('#app', lcConf, {'whiteboard.enable_math_tools': true, 'settings.embedded_whiteboard': true});
+      const homework = new VcHomework('#app', liveLinguConf);
     
       homework.addEventListener('whiteboardAction', function (evt) {
           console.log(evt.type, evt.detail)
