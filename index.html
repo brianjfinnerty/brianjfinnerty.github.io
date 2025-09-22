@@ -60,6 +60,15 @@
 	    "instantClass": true,
 	    "validateUrl": "http://localhost:3000/get-valid-token/",
 	}
+
+	const liveLinguaConf = {
+	  'userid': 'admin-1', // Eg. "12345G"
+	  'token': 'group-class-12213',
+	  'username': 'Live Lingua', // Eg. "Test Widget Teacher",
+	  'publicKey': '29fcf12271dc18820d9ac87a',
+	  'userType': 'admin',
+	  'validateUrl': 'http://localhost:3000/get-valid-token/'
+  }
 	
 	/* const litteraConf = {
             'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
@@ -87,7 +96,7 @@
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+	let classroom = new VirtualClassroom('#app', liveLinguaConf, classConf);
 		
 	// https://brianjfinnerty.github.io/index.html?userId=20224&token=july-16-25-2&userType=teacher&username=Brian
 	// https://brianjfinnerty.github.io/index.html?userId=nataliia-test&token=july-16-25-2&userType=student&username=Nataliia
