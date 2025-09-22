@@ -6,8 +6,8 @@
   <title>Learncube Virtual Classroom Widget</title>
 
 	
-<link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css?21-aug-25-q1">	
-<script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js?21-aug-25-q1"></script>
+<link rel="stylesheet" type="text/css" href="https://static.learncube.net/vc/virtualclassroom/apisanity/client/css/app.css?22-sept-25-q1">	
+<script type="text/javascript" src="https://static.learncube.net/vc/virtualclassroom/apisanity/client/js/app.js?22-sept-25-q1"></script>
 
 </head>
 <body>
@@ -46,6 +46,15 @@
 	    "instantClass": true,
 	    "validateUrl": "http://localhost:3000/get-valid-token/",
 	}	
+
+	const liveLinguaConf = {
+	  'userid': 'admin-1', // Eg. "12345G"
+	  'token': 'group-class-12213',
+	  'username': 'Live Lingua', // Eg. "Test Widget Teacher",
+	  'publicKey': '29fcf12271dc18820d9ac87a',
+	  'userType': 'admin',
+	  'validateUrl': 'http://localhost:3000/get-valid-token/'
+  }
 	
 	/* const litteraConf = {
             'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
@@ -73,7 +82,7 @@
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+	let classroom = new VirtualClassroom('#app', liveLinguaConf, classConf);
 
 		
 	function dynoToken (tok) {
