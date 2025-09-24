@@ -66,6 +66,15 @@
             'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
 	const recording = true; */
+
+const mlConf = {
+	'userid': '1916', // Eg. "12345G"
+	'token': '538cce692dfc0f1499f35e0fc23eded48ea2a410658951af879d485673eb768f-16252740-16252740',
+	'username': 'Maciej Stróżewski', // Eg. "Test Widget Teacher",
+	'publicKey': 'eae098fad8fc90724e3b6415',
+	'userType': 'student',
+	'validateUrl': 'http://localhost:3000/get-valid-token/'
+}
 	
 	const classConf = {
 		'settings.class_control_button': true,
@@ -82,7 +91,7 @@
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', liveLinguaConf, classConf);
+	let classroom = new VirtualClassroom('#app', mlConf, classConf);
 
 		
 	function dynoToken (tok) {
