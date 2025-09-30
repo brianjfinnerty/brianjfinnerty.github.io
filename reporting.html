@@ -85,7 +85,10 @@ function handleEvent (evt, app) {
 		
 reporting.addEventListener('enterClassReview', (evt) => handleEvent(evt, 'class review'))
 reporting.addEventListener('enterHomework', (evt) => handleEvent(evt, 'homework'))
-reporting.addEventListener('enterRecording', (evt) => handleEvent(evt, 'recording'))
+reporting.addEventListener('enterRecording', (evt) => {
+	const url = 'https://brianjfinnerty.github.io/recording.html?token=' + evt.detail.token
+	window.open(url)
+})
 	
 	</script>
 
