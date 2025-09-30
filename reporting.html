@@ -83,8 +83,12 @@ function handleEvent (evt, app) {
     console.log('User ' + user.username + ' entered the ' + app + ' of class' + token +' at ' + timestamp)
 }		
 		
-reporting.addEventListener('enterClassReview', (evt) => handleEvent(evt, 'class review'))
+reporting.addEventListener('enterClassReview', (evt) => {
+	const url = 'https://brianjfinnerty.github.io/index.html?token=' + evt.detail.token + '#/review/'
+	window.open(url)
+})
 reporting.addEventListener('enterHomework', (evt) => handleEvent(evt, 'homework'))
+	
 reporting.addEventListener('enterRecording', (evt) => {
 	const url = 'https://brianjfinnerty.github.io/recording.html?token=' + evt.detail.token
 	window.open(url)
