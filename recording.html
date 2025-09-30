@@ -43,7 +43,17 @@
             'publicKey': '9579e27751756ed4addcd787',
             'validateUrl': 'http://localhost:3000/get-valid-token/'
         }
-  	const recording = new VcRecording('#app', lcConf, {'settings.enable_recording_download': true});
+
+
+const wefitConf = {
+	"publicKey": "afddc7ad02af2280c9caf93a",
+	"userid": 879839,
+	"username": "rremaclewefitgroupcom",
+	"userType": "teacher",
+	"validateUrl": "http://localhost:3000/get-valid-token/",
+	"token": params.token
+}
+  	const recording = new VcRecording('#app', wefitConf, {'settings.enable_recording_download': true});
 	  
 	  
   </script>
