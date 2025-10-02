@@ -95,6 +95,7 @@ const mlConf = {
 		'settings.show_class_feedback': false,
 		'settings.allow_skip_onboarding': true,
 		'settings.enter_when_admitted': false,
+		'whiteboard.disable_file_download': true,
 		// 'lesson_materials.library_url': 'http://localhost:3000/content-library/',
 		// 'lesson_materials.premium_url': 'http://localhost:3000/content-library/premium/'
 		// 'lesson_materials.s3_content_library': {'region': 'us-east-1', 'bucket': 'us1-content-library.learncube.com'}
@@ -104,7 +105,7 @@ const mlConf = {
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+	let classroom = new VirtualClassroom('#app', liveLinguaConf, classConf);
 		
 	// https://brianjfinnerty.github.io/index.html?userId=20224&token=july-16-25-2&userType=teacher&username=Brian
 	// https://brianjfinnerty.github.io/index.html?userId=nataliia-test&token=july-16-25-2&userType=student&username=Nataliia
