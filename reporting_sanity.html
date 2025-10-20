@@ -56,8 +56,7 @@ const lcConf = {
     'validateUrl': 'http://localhost:3000/get-valid-token/'		
 }		
 		 
-
-const reporting = new VcReporting('#lc-insights', liveLinguConf)
+const reporting = new VcReporting('#lc-insights', lcConf)
 
 function handleEvent (evt, app) {
     const user = evt.detail.user;
@@ -66,7 +65,13 @@ function handleEvent (evt, app) {
     console.log('User ' + user.username + ' entered the ' + app + ' of class' + token +' at ' + timestamp)
 }		
 		
-reporting.addEventListener('enterClassReview', (evt) => handleEvent(evt, 'class review'))
+// reporting.addEventListener('enterClassReview', (evt) => handleEvent(evt, 'class review'))
+	
+reporting.addEventListener('enterClassReview', (evt) => {
+	const url = 'https://brianjfinnerty.github.io/index_sanity.html?token=' + evt.detail.token + '#/review/'
+	window.open(url)
+})
+	
 reporting.addEventListener('enterHomework', (evt) => handleEvent(evt, 'homework'))
 reporting.addEventListener('enterRecording', (evt) => handleEvent(evt, 'recording'))
 	
