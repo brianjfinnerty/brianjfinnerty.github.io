@@ -28,7 +28,7 @@
             'username': params.username || 'brianfinnerty', // Eg. "Test Widget Teacher",
             'publicKey': params.publicKey || '63d2dd20e7557161942c53e4',
             'userType': params.userType || 'student',
-            'validateUrl': 'http://localhost:3000/get-valid-token/'
+            'validateUrl': 'https://vcapi2.learncube.com/local-test/auth/'
         }
 
         const edooConf = {
@@ -72,7 +72,7 @@
         "validateUrl": "http://localhost:3000/get-valid-token/"
       }
     
-        const lcLibrary = new Library('#lc-lib', liveLinguaConf)
+        const lcLibrary = new Library('#lc-lib', lcConf)
   </script>
 
    
