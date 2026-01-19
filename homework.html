@@ -44,7 +44,7 @@
           'validateUrl': 'http://localhost:3000/get-valid-token/'
       }
       
-      const homework = new VcHomework('#app', liveLinguConf);
+      const homework = new VcHomework('#app', lcConf);
     
       homework.addEventListener('whiteboardAction', function (evt) {
           console.log(evt.type, evt.detail)
