@@ -57,6 +57,16 @@
 	  'validateUrl': 'http://localhost:3000/get-valid-token/'
   }
 	
+	const devLiveLinguaConf = {
+		'userid': 'teacher-723', // Eg. "12345G"
+		  'token': 'test-private-class-169292',
+		  'username': 'Mrs. Gannon Bass', // Eg. "Test Widget Teacher",
+		  'publicKey': '29fcf12271dc18820d9ac87a',
+		  'userType': 'teacher',
+		  'validateUrl': 'http://localhost:3000/get-valid-token/
+	}
+ 
+	
 	/* const litteraConf = {
             'token': 'e30ff040-46a3-4c8c-8b2c-1bb9ac8a5c80', // Eg. "first-test-room-token"
             'userid': 'cb1e49da-4202-4894-9774-adfd445ee1cc',
@@ -92,7 +102,7 @@ const mlConf = {
 		// 'video.videoprovider': 'twilio'
 	}
 		
-	let classroom = new VirtualClassroom('#app', lcConf, classConf);
+	let classroom = new VirtualClassroom('#app', devLiveLinguaConf, classConf);
 
 		
 	function dynoToken (tok) {
